@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoes_app/pages/description_page.dart';
 import 'package:shoes_app/pages/zapato_page.dart';
 
 void main() => runApp(ShoesApp());
@@ -8,7 +9,8 @@ class ShoesApp extends StatelessWidget {
     return MaterialApp(
       title: 'Shoes App',
       debugShowCheckedModeBanner: false,
-      home: ZapatoPage()
+      // home: ZapatoPage()
+      home: DescriptionPage(),
     );
   }
 }
