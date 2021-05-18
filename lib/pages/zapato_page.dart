@@ -7,8 +7,6 @@ class ZapatoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // body: CustomAppbar(title: "For You",),
-      // body: ZapatoPreview(),
       body: Column(
         children: [
           CustomAppbar(title: "For You"),
@@ -17,7 +15,8 @@ class ZapatoPage extends StatelessWidget {
             physics: BouncingScrollPhysics(),
             child: Column(
               children: [
-                ZapatoPreview(),
+                Hero(tag: 'Tarea-1',
+                child: ZapatoPreview()),
                 ZapatoDescripcion(
                   titulo: 'Nike Air Max 720',
                   descripcion:
@@ -26,7 +25,9 @@ class ZapatoPage extends StatelessWidget {
               ],
             ),
           )),
-          AgregarCarrito(monto: 180.0,)
+          AgregarCarrito(
+            monto: 180.0,
+          )
         ],
       ),
     );
