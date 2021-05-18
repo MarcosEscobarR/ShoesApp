@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shoes_app/helpers/changue_color_provider.dart';
 import 'package:shoes_app/pages/description_page.dart';
 
 class ZapatoPreview extends StatelessWidget {
@@ -43,22 +45,22 @@ class _Botones extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         _Boton(
-          numero: 7,
+          7.0,
         ),
         _Boton(
-          numero: 7.5,
+          7.5,
         ),
         _Boton(
-          numero: 8,
+          8.0,
         ),
         _Boton(
-          numero: 8.5,
+          8.5,
         ),
         _Boton(
-          numero: 9,
+          9.0,
         ),
         _Boton(
-          numero: 9.5,
+          9.5,
         ),
       ],
     );
@@ -68,28 +70,43 @@ class _Botones extends StatelessWidget {
 class _Boton extends StatelessWidget {
   final double numero;
 
-  const _Boton({this.numero});
+  const _Boton(this.numero);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      child: Text(
-        '${numero.toString().replaceAll('.0', '')}',
-        style: TextStyle(
-            color: numero == 9.0 ? Colors.white : Color(0xffF1A23A),
-            fontSize: 16,
-            fontWeight: FontWeight.bold),
+    final zapato = Provider.of<ZapatoProvider>(context);
+    return GestureDetector(
+      onTap: () {
+        final zapato = Provider.of<ZapatoProvider>(context, listen: false);
+        zapato.talla = this.numero;
+        print(zapato.talla);
+        print(this.numero);
+      },
+      child: Container(
+        alignment: Alignment.center,
+        child: Text(
+          '${numero.toString().replaceAll('.0', '')}',
+          style: TextStyle(
+              color: (this.numero == zapato.talla)
+                  ? Colors.white
+                  : Color(0xffF1A23A),
+              fontSize: 16,
+              fontWeight: FontWeight.bold),
+        ),
+        width: 45,
+        height: 45,
+        decoration: BoxDecoration(
+            color: (this.numero == zapato.talla)
+                ? Color(0xffF1A23A)
+                : Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                  color: Color(0xffF1A23A),
+                  blurRadius: 10,
+                  offset: Offset(0, 5))
+            ]),
       ),
-      width: 45,
-      height: 45,
-      decoration: BoxDecoration(
-          color: numero == 9.0 ? Color(0xffF1A23A) : Colors.white,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-                color: Color(0xffF1A23A), blurRadius: 10, offset: Offset(0, 5))
-          ]),
     );
   }
 }
@@ -126,6 +143,7 @@ class _Zapato extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final String color = Provider.of<ChangeColorProvider>(context).color;
     return Padding(
       padding: const EdgeInsets.all(50),
       child: Image(

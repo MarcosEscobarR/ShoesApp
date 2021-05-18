@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shoes_app/helpers/changue_color_provider.dart';
 import 'package:shoes_app/widgets/custom_widgets.dart';
 
 import '../widgets/custom_appbar.dart';
