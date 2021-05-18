@@ -12,7 +12,7 @@ class ZapatoPreview extends StatelessWidget {
           : EdgeInsets.symmetric(horizontal: 20),
       child: Container(
         width: double.infinity,
-        height: fullScreen ? 400 : 430,
+        height: fullScreen ? 420 : 430,
         decoration: BoxDecoration(
             color: Color(0xffFFCF53), borderRadius: BorderRadius.circular(50)),
         child: Column(
