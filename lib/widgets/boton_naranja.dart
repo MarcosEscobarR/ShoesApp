@@ -9,16 +9,22 @@ class BotonNaranja extends StatelessWidget {
       {@required this.width, @required this.height, @required this.texto});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      width: width,
-      height: height,
-      decoration: BoxDecoration(
-          color: Colors.orange, borderRadius: BorderRadius.circular(50)),
-      child: Text(
-        texto,
-        style: TextStyle(
-            color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
+    return GestureDetector(
+      onTap: () {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(texto)));
+      },
+      child: Container(
+        alignment: Alignment.center,
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+            color: Colors.orange, borderRadius: BorderRadius.circular(50)),
+        child: Text(
+          texto,
+          style: TextStyle(
+              color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }

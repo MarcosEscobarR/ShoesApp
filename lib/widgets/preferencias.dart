@@ -47,7 +47,7 @@ class _ColorBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        // Provider.of<ChangeColorProvider>(context, listen: false).color = colorString;
+        Provider.of<ZapatoProvider>(context, listen: false).assetImage = colorString;
       },
       child: Container(
         width: 40,

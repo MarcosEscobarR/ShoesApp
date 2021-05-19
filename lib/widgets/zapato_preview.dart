@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shoes_app/helpers/changue_color_provider.dart';
+import 'package:shoes_app/helpers/helpers.dart';
 import 'package:shoes_app/pages/description_page.dart';
 
 class ZapatoPreview extends StatelessWidget {
@@ -13,6 +14,7 @@ class ZapatoPreview extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (!fullScreen) {
+          ChangueStatusbarLight();
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -25,7 +27,7 @@ class ZapatoPreview extends StatelessWidget {
             : EdgeInsets.symmetric(horizontal: 20),
         child: Container(
           width: double.infinity,
-          height: fullScreen ? 420 : 500,
+          height: fullScreen ? 400 : 430,
           decoration: BoxDecoration(
               color: Color(0xffFFCF53),
               borderRadius: BorderRadius.circular(50)),
@@ -79,8 +81,6 @@ class _Boton extends StatelessWidget {
       onTap: () {
         final zapato = Provider.of<ZapatoProvider>(context, listen: false);
         zapato.talla = this.numero;
-        print(zapato.talla);
-        print(this.numero);
       },
       child: Container(
         alignment: Alignment.center,
@@ -143,11 +143,11 @@ class _Zapato extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final String color = Provider.of<ChangeColorProvider>(context).color;
+    final String color = Provider.of<ZapatoProvider>(context).assetImage;
     return Padding(
       padding: const EdgeInsets.all(50),
       child: Image(
-        image: AssetImage('assets/imgs/azul.png'),
+        image: AssetImage('assets/imgs/$color.png'),
       ),
     );
   }

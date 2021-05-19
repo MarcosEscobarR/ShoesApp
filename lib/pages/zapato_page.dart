@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shoes_app/helpers/changue_color_provider.dart';
+import 'package:shoes_app/helpers/helpers.dart';
 import 'package:shoes_app/widgets/custom_widgets.dart';
 
 import '../widgets/custom_appbar.dart';
@@ -8,6 +9,7 @@ import '../widgets/custom_appbar.dart';
 class ZapatoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    ChangueStatusbarDark();
     return Scaffold(
       body: Column(
         children: [
@@ -17,8 +19,7 @@ class ZapatoPage extends StatelessWidget {
             physics: BouncingScrollPhysics(),
             child: Column(
               children: [
-                Hero(tag: 'Tarea-1',
-                child: ZapatoPreview()),
+                Hero(tag: 'Tarea-1', child: ZapatoPreview()),
                 ZapatoDescripcion(
                   titulo: 'Nike Air Max 720',
                   descripcion:
